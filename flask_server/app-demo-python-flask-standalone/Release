@@ -1,0 +1,4 @@
+framework: standalone
+start_timeout: 30
+ports:
+  port_tag: 8888

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href={{url_for('static', filename="css/bootstrap.min.css")}}>
+    <link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+    <title>Artist at ease</title>
+</head>
+
+<body>
+    <div class="fixed-header">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand" href="#home">Artist at ease</a>
+            </div>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#upload_file">Upload</a></li>
+                    <li><a href="#task_status">TaskStatus</a></li>
+                    <!--<li><a class="external" href="https://www.facebook.com/templatemo" target="_blank">External</a></li>-->
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="container">
+       <section class="col-md-12 content padding" id="home">
+        <div class="col-lg-6 col-md-6 col-md-push-6 content-item">
+           <img src="images/home_bg.png" alt="Image" class="tm-image">
+       </div> 
+       <div class="col-lg-6 col-md-6 col-md-pull-6 content-item background flexbox">
+           <h2 class="section-title">Decorator?? Creator??</h2>
+           <p class="section-text">We wanna provide you an ARTIST who can act as a Decorator or a Creator at ease! This artist is so "AI", really "hackathon", isn' t it?...</p>
+           <ul >
+               <li class="dark-blue-text"><h3>+ Decorator</h3></li>
+                    <p>He can become <a href="https://en.wikipedia.org/wiki/Vangogh">Van Gogh</a>!</p>
+                    <p>He can become <a href="https://en.wikipedia.org/wiki/Pablo_Picasso">Pablo Picasso</a>!</p>
+                    <p>He can become <a href="https://en.wikipedia.org/wiki/Qi_Baishi">Qi Baishi</a>!</p>
+                    <p>He can become any artist you wanna!!</p>
+               <li class="dark-blue-text"><h3>+ Creator</h3></li>
+                    <p>He can be the GOD!!! He can create pictures that never exist in this WORLD before!!! He can create things that you never ever thought of before!!!</p>
+           </ul>
+       </div>
+
+   </section>
+   
+   <section class="col-md-12 content" id="upload_file">
+       <div class="col-lg-6 col-md-6 col-md-push-6 content-item">
+           <img src="images/upload_bg.png" alt="Image" class="tm-image">
+       </div>
+       <div class="col-lg-6 col-md-6 col-md-pull-6 content-item background flexbox">
+           <h2 class="section-title">Upload Images</h2>
+           <p>Current verion only supports Decorator mode.</p>
+           <p>The next verion will support Creator mode. We are right here waiting. ^_^</p>
+
+        <form action="/process" method="post" name="upload_file" class="contact-form" enctype="multipart/form-data">
+
+               <table class="table-hover table"> 
+               <thead> 
+               <tr> 
+                   <th></th> 
+                   <th></th> 
+               </tr> 
+               </thead> 
+               <tbody> 
+                    <tr>
+                    <td>method</td>
+                    <td>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group contact-field">
+                        <select name="select_method">
+                            {% for k, v in method_arr %}
+                            <option value={{ v }}>{{ k }}</option>
+                            {% endfor %}
+                            </select>
+                        </div>    
+                    </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>input image</td>
+                    <td>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group contact-field">
+                            <input name="inputfile" type="file" class="form-control" id="subject" placeholder="your input file..." required>
+                        </div>    
+                    </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>style image</td>
+                    <td>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group contact-field">
+                            <input name="stylefile" type="file" class="form-control" id="subject" placeholder="your style file..." required>
+                        </div>    
+                    </div>
+                    </td>
+                    </tr>
+
+               </tbody> 
+               </table>
+
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group margin-b-0">
+                <center>
+                    <button type="submit" id="form-submit" class="btn no-bg btn-contact">Upload</button>
+                </center>
+                </div>    
+            </div>
+        </form>
+        <!--</div> -->
+        <div id="msgSubmit" class="h3 text-center hidden">Message Submitted!</div>
+
+    </div>
+
+</section>
+
+
+
+        <section class="col-md-12 content" id="task_status">
+           <div class="background">
+               <h2 class="main-title text-center dark-blue-text">Task Status</h2>
+               <p>Current task status: </p>
+               <table class="table-hover table"> 
+               <thead> 
+               <tr> 
+                   <th>id</th> 
+                   <th>task name</th> 
+                   <th>start time</h>
+                   <th>end time</h>
+                   <th>task status</th> 
+                   <th>download link</th> 
+               </tr> 
+               </thead> 
+               <tbody> 
+                    {% for id, taskname, starttime, endtime, status, link in status_arr %}
+                    <tr>
+                    <td>{{ id }}</td>
+                    <td>{{ taskname }}</td>
+                    <td>{{ starttime }}</td>
+                    <td>{{ endtime }}</td>
+                    <td>{{ status }}</td>
+                    {% if status == "finished"%}
+                    <td><a href={{ link }}>download_path</a></td>
+                    {% else %}
+                    <td>no download path yet</td>
+                    {% endif %}
+                    </tr>
+                    {% endfor %}
+
+               </tbody> 
+               </table>
+           </div>
+       </section>
+
+
+<footer class="col-md-12 content" id="externals">
+ <div class="col-lg-6 col-md-6 last">
+   <img src="images/thanks_bg.png" alt="Image" class="tm-image">
+</div>
+<div class="col-lg-6 col-md-6 background last about-text-container">
+   <h2 class="section-title">Many Thanks to</h2>
+   <p class="about-text">Baidu cloud platform: 
+       <li><a href="https://cloud.baidu.com/">https://cloud.baidu.com</a></li>
+   </p>
+   <p class="about-text">bootstrap template: 
+       <li><a href="http://www.templatemo.com/tm-477-puzzle">Puzzle Template.</a></li>
+   </p>
+   <p class="about-text">open-source deep learning projects: 
+       <li><a href="https://github.com/dmlc/mxnet/tree/master/example/neural-style">neural-style(mxnet version)</a></li>
+       <li><a href="https://github.com/anishathalye/neural-style">neural-style(tensorflow version)</a></li>
+   </p>
+   <p class="about-text">Promising projects which will support our Creator mode:  
+       <li><a href="https://openai.com/blog/generative-models/">Blog: Generative Models in OpenAI</a>
+       <li><a href="https://github.com/openai/InfoGAN">Code: InfoGAN</a>
+
+   </p>
+
+</div>
+</footer>
+
+</div>
+
+<div class="text-center footer">
+	<div class="container">
+		Copyright @ 2016 Artist at ease 
+    
+    	| More Templates <a href="http://www.cssmoban.com/" target="_blank" >from cssmoban.com</a>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.singlePageNav.min.js"></script>
+
+<script>
+
+// Check scroll position and add/remove background to navbar
+function checkScrollPosition() {
+    if($(window).scrollTop() > 50) {
+      $(".fixed-header").addClass("scroll");
+  } else {        
+      $(".fixed-header").removeClass("scroll");
+  }
+}
+
+$(document).ready(function () {   
+    // Single page nav
+    $('.fixed-header').singlePageNav({
+        offset: 59,
+        filter: ':not(.external)',
+        updateHash: true        
+    });
+
+    checkScrollPosition();
+
+    // nav bar
+    $('.navbar-toggle').click(function(){
+        $('.main-menu').toggleClass('show');
+    });
+
+    $('.main-menu a').click(function(){
+        $('.main-menu').removeClass('show');
+    });
+});
+
+$(window).on("scroll", function() {
+    checkScrollPosition();    
+});
+</script>
+</body>
+</html>

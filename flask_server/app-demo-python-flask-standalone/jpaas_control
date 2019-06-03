@@ -1,0 +1,14 @@
+#!/bin/env bash
+
+#set PATH
+export PATH=/home/work/local/Python-2.7.5/bin:$PATH
+
+#$PWD is $HOME=/home/$USER
+(
+  cd local && tar zxf Python-2.7.5.tar.gz
+)
+
+#run app
+#python idea_optimization_server.py
+#python artist_at_ease.py
+python app.py
